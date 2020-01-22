@@ -4,13 +4,12 @@ $email = $_REQUEST['email'];
 $contrasena = $_REQUEST['contrasena'];
 $login = new Login();
 $resultado = $login->ingreso($email,$contrasena);
-die(var_dump($resultado));
 
-if($resultado[0]['cantidad'] < 1){
+if(!$resultado['cantidad']){
 	$return = "Usuario o contrasena incorrectos, intenta nuevamente";
-}else{
-
+}else{	
+	$return = 'OK';
 }
 
-die($return);
+die(json_encode($return));
 ?>

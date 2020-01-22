@@ -6,8 +6,14 @@ class conexion{
 	}
 
 	public function consultar($con,$consulta){
-		$consulta = mysqli_query($con,$consulta);
-		$resultado = mysqli_fetch_array($consulta,MYSQLI_NUM);
+		$query = mysqli_query($con,$consulta);
+		$resultado = mysqli_fetch_array($query,MYSQLI_ASSOC);
+		return $resultado;
+	}
+
+	public function ManipulacionDatos($con,$consulta){
+		$query = mysqli_query($con,$consulta);
+		$resultado = mysqli_affected_rows($con);
 		return $resultado;
 	}
 }
